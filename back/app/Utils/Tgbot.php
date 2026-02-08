@@ -8,8 +8,8 @@ class Tgbot
 {
     public static function msg(array | string $message)
     {
-        $token = '6269565483:AAGVqla3aZ4LO4rQWVwmKxHSBJcojki4LlE';
-        $chatId = '-1002103223942';
+        $token = '6269565483:';
+        $chatId = '-';
 
         $apiDomain = 'https://api.telegram.org/bot' . $token . '/';
         $url = $apiDomain . 'sendMessage';
