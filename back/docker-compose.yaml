@@ -1,0 +1,22 @@
+services:
+  php-fpm:
+    build:
+      context: .
+      dockerfile: _docker/Dockerfile
+    volumes:
+      - ./:/var/www/bitrix24.reutskiy-a.ru
+      - ./_docker/logs/php_error.log:/var/log/php_error.log
+      - ./_docker/www.conf:/usr/local/etc/php-fpm.d/www.conf
+    restart: unless-stopped
+    container_name: php-fpm_bitrix24.reutskiy-a.ru
+    ports:
+      - 9003:9000
+    networks:
+      - general-network
+    labels:
+      - "com.centurylinklabs.watchtower.enable=false"
+    command: supervisord -n
+
+networks:
+  general-network:
+    external: true
